@@ -3,5 +3,20 @@
 @tailwind utilities;
 
 body{
-  @apply bg-blue-950 text-white
+  @apply bg-slate-100 min-h-screen flex items-center justify-center
+}
+input{
+  @apply outline-none 
+}
+
+@layer utilities {
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    @apply appearance-none;
+    margin: 0;
+  }
+  
+  input[type='number'] {
+    @apply appearance-none;
+  }
 }
