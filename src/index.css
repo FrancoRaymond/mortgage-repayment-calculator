@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body{
+  font-family: "Plus Jakarta Sans", sans-serif;
   @apply bg-slate-100 min-h-screen flex items-center justify-center
 }
 input{

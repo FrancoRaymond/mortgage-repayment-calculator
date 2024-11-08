@@ -3,7 +3,7 @@ import calcIcon from '../assets/icon-calculator.svg'
 
 const Form = () => {
   return (
-    <form action="" className='bg-white p-8 w-[450px]'>
+    <form action="" className='bg-white p-9 w-[450px]'>
         <header className='flex justify-between items-baseline mb-6'>
             <h1 className='text-2xl font-semibold text-slate-900'>Mortgage Calculator</h1>
             <span className='text-slate-500 underline font-medium cursor-pointer'>Clear All</span>
