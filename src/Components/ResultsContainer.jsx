@@ -25,9 +25,7 @@ const ResultsContainer = ({monthlyRepayment,totalOverTheTerm}) => {
             </div>
           </div>
         </div> 
-      )}
-      
-         
+      )}      
     </div>
   )
 }
