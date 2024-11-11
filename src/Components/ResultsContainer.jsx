@@ -3,9 +3,9 @@ import emptyIllustration from '../assets/illustration-empty.svg'
 
 const ResultsContainer = ({monthlyRepayment,totalOverTheTerm}) => {
   return (
-    <div className={`bg-slate-900 w-[450px] flex p-9 rounded-bl-[75px] ${monthlyRepayment === 0 ? 'items-center' : ''}`}>
+    <div className={`bg-slate-900 flex px-2 py-5 md:p-9 md:rounded-bl-[75px] max-w-[450px] ${monthlyRepayment === 0 ? 'items-center' : ''}`}>
       {monthlyRepayment === 0 ? (
-        <div className='px-10 text-center flex-col gap-5 flex'>
+        <div className='px-4 md:px-10 text-center flex-col gap-5 flex'>
           <img src={emptyIllustration} alt="" className='mx-auto'/>
           <h2 className='text-white text-2xl font-semibold'>Results shown here</h2>
           <p className='text-slate-500'>Complete the form and click "calculate repayments" to see what your monthly repayments would be.</p>

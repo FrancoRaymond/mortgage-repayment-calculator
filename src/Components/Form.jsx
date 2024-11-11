@@ -15,21 +15,21 @@ const Form = ({handleInputChange, handleSubmit, formData, errors, setFormData, s
     }
 
   return (
-    <form action="" className='bg-white p-9 w-[450px]' onSubmit={handleSubmit}>
-        <header className='flex justify-between items-baseline mb-6'>
-            <h1 className='text-2xl font-semibold text-slate-900'>Mortgage Calculator</h1>
+    <form action="" className='bg-white px-2 py-5 md:p-9 max-w-[450px]' onSubmit={handleSubmit}>
+        <header className='flex flex-col md:flex-row md:justify-between items-baseline mb-6'>
+            <h1 className='text-lg sm:text-2xl font-semibold text-slate-900'>Mortgage Calculator</h1>
             <span 
                 onClick={handleReset}
-                className='text-slate-500 underline font-medium cursor-pointer'>Clear All
+                className='text-slate-500 underline font-medium cursor-pointer mt-2 md:mt-0'>Clear All
             </span>
         </header>
         <label className='text-slate-500 font-medium'>Mortage Amount <br/>
-            <div className='mt-3 border border-slate-500 overflow-hidden rounded-md'>
+            <div className='mt-3 border border-slate-500 overflow-hidden rounded-md flex'>
                 <span className='bg-slate-100 text-slate-500 text-lg font-bold py-3 px-3'>R</span>
                 <input
                     name='amount' 
                     type="number" 
-                    className='text-lg text-slate-900 font-semibold px-4 py-2' 
+                    className='text-lg text-slate-900 font-semibold px-3 py-2' 
                     value={formData.amount}
                     onChange={handleInputChange}
                 />
@@ -38,41 +38,44 @@ const Form = ({handleInputChange, handleSubmit, formData, errors, setFormData, s
                 <p className="text-red-500 text-sm">This field is required</p>
             )}      
         </label>
-        <div className="flex flex-wrap mt-6 mb-6 w-full justify-between space-y-4 md:space-y-0">
-            <label className="text-slate-500 font-medium w-full md:w-[48%]">
-                Mortgage Term<br />
-                <div className="mt-3 flex items-center border border-slate-500 overflow-hidden rounded-md">
-                    <input
-                        name='term'
-                        type="number"
-                        className="text-lg text-slate-900 font-semibold px-4 py-2 w-[125px] grow"
-                        value={formData.term}
-                        onChange={handleInputChange}
-                    />
-                    <span className="bg-slate-100 text-slate-500 text-lg font-bold py-2 px-3 mr-0">Year</span>
-                </div>
-                {errors.term && (
-                    <p className="text-red-500 text-sm">This field is required</p>
-                )}
-            </label>
+        <div className="overflow-x-hidden">
+            <div className="flex flex-col mt-6 mb-6 w-full md:flex-row md:justify-between gap-5">
+                <label className="text-slate-500 font-medium w-full md:w-1/2 md:block">
+                    Mortgage Term<br />
+                    <div className="mt-3 flex items-center border border-slate-500 overflow-hidden rounded-md">
+                        <input
+                            name="term"
+                            type="number"
+                            className="text-lg text-slate-900 font-semibold px-3 py-2 w-full"
+                            value={formData.term}
+                            onChange={handleInputChange}
+                        />
+                        <span className="bg-slate-100 text-slate-500 text-lg font-bold py-2 px-3">Year</span>
+                    </div>
+                    {errors.term && (
+                        <p className="text-red-500 text-sm">This field is required</p>
+                    )}
+                </label>
 
-            <label className="text-slate-500 font-medium w-full md:w-[48%]">
-                Interest Rate<br />
-                <div className="mt-3 flex items-center border border-slate-500 overflow-hidden rounded-md">
-                <input
-                    name='interest'
-                    type="number"
-                    className="text-lg text-slate-900 font-semibold px-4 py-2 w-[125px] grow"
-                    value={formData.interest}
-                    onChange={handleInputChange}
-                />
-                <span className="bg-slate-100 text-slate-500 text-lg font-bold py-2 px-3 mr-0">%</span>
-                </div>
-                {errors.interest && (
-                    <p className="text-red-500 text-sm">This field is required</p>
-                )}
-            </label>
+                <label className="text-slate-500 font-medium w-full md:w-1/2">
+                    Interest Rate<br />
+                    <div className="mt-3 flex items-center border border-slate-500 overflow-hidden rounded-md">
+                        <input
+                            name="interest"
+                            type="number"
+                            className="text-lg text-slate-900 font-semibold px-3 py-2 w-full"
+                            value={formData.interest}
+                            onChange={handleInputChange}
+                        />
+                        <span className="bg-slate-100 text-slate-500 text-lg font-bold py-2 px-3">%</span>
+                    </div>
+                    {errors.interest && (
+                        <p className="text-red-500 text-sm">This field is required</p>
+                    )}
+                </label>
+            </div>
         </div>
+
         <label className='text-slate-500 font-medium'>Mortage Type<br/>
             <div className='mt-3 border border-slate-500 overflow-hidden rounded-md px-3 flex items-center'>
                 <input 
@@ -105,7 +108,7 @@ const Form = ({handleInputChange, handleSubmit, formData, errors, setFormData, s
             type='submit'
         >
             <img src={calcIcon} alt="calculator icon" />
-            <span className='text-lg text-slate-900 font-semibold'>Calculate Repayments</span>
+            <span className='text-md text-slate-900 font-semibold'>Calculate Repayments</span>
         </button>
     </form>
   )

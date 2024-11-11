@@ -52,23 +52,34 @@ function App() {
     setErrors(newErrors);
 
     if (!Object.values(newErrors).some((error) => error)) {
-
+      const principal = parseFloat(formData.amount);
       const monthlyInterestRate = parseFloat(formData.interest) / 100 / 12;
       const totalPayments = parseFloat(formData.term) * 12;
-      const monthlyRepayment = parseFloat(
-        formData.amount * 
-        (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / 
-        (Math.pow(1 + monthlyInterestRate, totalPayments) - 1)
-      );
-      
-      const totalRepayment = monthlyRepayment * totalPayments;
-      setMonthlyRepayment(monthlyRepayment.toFixed(2));
-      setTotalOverTheTerm(totalRepayment.toFixed(2));
+
+      if (formData.type === 'Repayment') {
+
+        const monthlyRepayment = principal * 
+          (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / 
+          (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+
+        const totalRepayment = monthlyRepayment * totalPayments;
+
+        setMonthlyRepayment(monthlyRepayment.toFixed(2));
+        setTotalOverTheTerm(totalRepayment.toFixed(2));
+
+      } else if (formData.type === 'Interest only'){
+
+        const monthlyRepayment = principal * monthlyInterestRate;
+        const totalInterestOnlyRepayment = monthlyRepayment * totalPayments;
+
+        setMonthlyRepayment(monthlyRepayment.toFixed(2));
+        setTotalOverTheTerm(totalInterestOnlyRepayment.toFixed(2));
+      }
     } 
   };
 
   return (
-    <div className='flex rounded-3xl overflow-hidden bg-white'>
+    <div className='flex flex-col md:flex-row md:rounded-3xl overflow-hidden bg-white '>
       <Form
         handleSubmit={handleSubmit}
         handleInputChange={handleInputChange}
