@@ -1,8 +1,17 @@
-# React + Vite
+## Welcome! 👋
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Thanks for checking out this front-end coding challenge.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## The challenge
+
+The challenge was to build out this mortgage repayment calculator and get it looking as close to the design as possible.
+
+
+users are able to: 
+
+- Input mortgage information and see monthly repayment and total repayment amounts after submitting the form
+- See form validation messages if any field is incomplete
+- Complete the form only using their keyboard
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
