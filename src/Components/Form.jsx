@@ -38,7 +38,7 @@ const Form = ({handleInputChange, handleSubmit, formData, errors, setFormData, s
                 <p className="text-red-500 text-sm">This field is required</p>
             )}      
         </label>
-        <div className="overflow-x-hidden">
+        <div className="overflow-x-hidden hidden">
             <div className="flex flex-col mt-6 mb-6 w-full md:flex-row md:justify-between gap-5">
                 <label className="text-slate-500 font-medium w-full md:w-1/2 md:block">
                     Mortgage Term<br/>
@@ -76,7 +76,7 @@ const Form = ({handleInputChange, handleSubmit, formData, errors, setFormData, s
             </div>
         </div>
 
-        <label className='text-slate-500 font-medium'>Mortage Type<br/>
+        <label className='text-slate-500 font-medium w-full hidden'>Mortage Type<br/>
             <div className={`${formData.type === "Repayment" ? 'bg-[#d9db30] bg-opacity-30 border border-[#d9db30]' : ''} mt-3 border cursor-pointer border-slate-500 overflow-hidden rounded-md px-3 flex items-center`}>
                 <input 
                     type="radio" 
@@ -104,7 +104,7 @@ const Form = ({handleInputChange, handleSubmit, formData, errors, setFormData, s
             )}     
         </label>
         <button 
-            className='bg-[#d9db30] flex gap-3 px-6 py-3 mt-7 rounded-full items-center'
+            className='bg-[#d9db30] flex gap-3 px-6 mx-auto py-3 mt-7 rounded-full items-center'
             type='submit'
         >
             <img src={calcIcon} alt="calculator icon" />

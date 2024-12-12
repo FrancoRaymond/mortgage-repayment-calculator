@@ -52,31 +52,40 @@ function App() {
     setErrors(newErrors);
 
     if (!Object.values(newErrors).some((error) => error)) {
-      const principal = parseFloat(formData.amount);
-      const monthlyInterestRate = parseFloat(formData.interest) / 100 / 12;
-      const totalPayments = parseFloat(formData.term) * 12;
-
+      const initialAmount = parseFloat(formData.amount);
+      const monthlyInterestRate = parseFloat(formData.interest) / 100 / 12; 
+      const totalPayments = parseFloat(formData.term) * 12; 
+    
+      const monthlyRepayment = initialAmount *
+        (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) /
+        (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+    
+      const totalRepayment = monthlyRepayment * totalPayments;
+    
       if (formData.type === 'Repayment') {
-
-        const monthlyRepayment = principal * 
-          (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, totalPayments)) / 
-          (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
-
-        const totalRepayment = monthlyRepayment * totalPayments;
-
-        setMonthlyRepayment(monthlyRepayment.toFixed(2));
-        setTotalOverTheTerm(totalRepayment.toFixed(2));
-
-      } else if (formData.type === 'Interest only'){
-
-        const monthlyRepayment = principal * monthlyInterestRate;
-        const totalInterestOnlyRepayment = monthlyRepayment * totalPayments;
-
-        setMonthlyRepayment(monthlyRepayment.toFixed(2));
-        setTotalOverTheTerm(totalInterestOnlyRepayment.toFixed(2));
+        setMonthlyRepayment(
+          monthlyRepayment.toLocaleString('en-US')
+        );
+        setTotalOverTheTerm(
+          totalRepayment.toLocaleString('en-US')
+        );
       }
-    } 
-  };
+    
+      if (formData.type === 'Interest only') {
+
+        const interestOnlyMonthlyRepayment = initialAmount * monthlyInterestRate;
+    
+        const totalInterestPaid = interestOnlyMonthlyRepayment * totalPayments;
+    
+        setMonthlyRepayment(
+          interestOnlyMonthlyRepayment.toLocaleString('en-US')
+        );
+        setTotalOverTheTerm(
+          totalInterestPaid.toLocaleString('en-US')
+        );
+      }
+    }
+  } 
 
   return (
     <div className='flex flex-col md:flex-row md:rounded-3xl overflow-hidden bg-white '>
